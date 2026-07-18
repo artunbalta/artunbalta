@@ -204,11 +204,12 @@ def main():
     header_total = parse_header_total(html)
     stats = compute_stats(days, header_total)
 
+    # NOTE: intentionally no wall-clock timestamp (e.g. generated_at) in the
+    # payload. The output is a pure function of the scraped data, so the daily
+    # CI job's git-auto-commit only produces a commit when the contribution data
+    # actually changed -- no timestamp-only churn.
     payload = {
         "username": GITHUB_USERNAME,
-        "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(
-            timespec="seconds"
-        ),
         "range": {"start": days[0]["date"], "end": days[-1]["date"]} if days else {},
         "total": stats["total"],
         "days": days,
