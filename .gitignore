@@ -1,0 +1,19 @@
+# Python virtual environment
+.venv/
+venv/
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+
+# Intermediate portrait artifact (regenerated locally from source-photo.png)
+source-prepped.png
+
+# Raw source photo kept local by default (this repo is public and the photo is
+# personal). The public artifact is avi-ascii.svg. Force-add if you want it in
+# the repo:  git add -f source-photo.png
+source-photo.*
+
+# OS junk
+.DS_Store
