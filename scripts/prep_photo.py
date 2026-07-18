@@ -18,6 +18,7 @@ WITHOUT crashing the rest of the pipeline (the README still works without a
 portrait — make_ascii_svg.py falls back to a placeholder).
 """
 
+import os
 import sys
 from pathlib import Path
 
@@ -47,19 +48,28 @@ def main(argv):
     import cv2
     import numpy as np
     from PIL import Image
-    from rembg import remove
+    from rembg import new_session, remove
 
     print(f"Loading {src.name} ...")
     img = Image.open(src).convert("RGBA")
 
-    print("Removing background with rembg (first run downloads the u2net model)...")
-    cut = remove(img)  # RGBA with background made transparent
+    # isnet-general-use segments the whole subject far better than the default
+    # u2net when a dark object (here the black mortarboard) sits against a dark
+    # background — u2net sliced the cap's left corner off. Override with
+    # REMBG_MODEL if needed.
+    model = os.environ.get("REMBG_MODEL", "isnet-general-use")
+    print(f"Removing background with rembg ({model}; first run downloads it)...")
+    session = new_session(model)
+    cut = remove(img, session=session)  # RGBA with background made transparent
     if cut.mode != "RGBA":
         cut = cut.convert("RGBA")
 
     rgba = np.array(cut)
     rgb = rgba[:, :, :3]
     alpha = rgba[:, :, 3].astype(np.float32) / 255.0
+    # Drop faint (<0.3) semi-transparent halo so leftover background smudges map
+    # to pure white -> blank in the ASCII, without eroding the solid subject.
+    alpha[alpha < 0.3] = 0.0
 
     print("Boosting local contrast with CLAHE ...")
     gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY)

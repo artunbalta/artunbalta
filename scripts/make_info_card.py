@@ -23,7 +23,7 @@ NOW = "MRes Neurotechnology @ Imperial College London"
 PREV = "EEE @ Bilkent University"
 STACK = "Python, PyTorch/NumPy, Bayesian inference, voice AI infra"
 BUILDING = "ECHO (persistent virtual world) · Volina AI (voice agents)"
-HIGHLIGHTS = "TEF Fellow · founder · neurotech + BCI"
+HIGHLIGHTS = "Turkish Entrepreneurship Foundation Alumni · founder · neurotech + BCI"
 
 ROWS = [
     ("Now", NOW),
