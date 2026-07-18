@@ -1,0 +1,5 @@
+# Lightweight deps for the daily CI job (heatmap only).
+# The portrait/info-card scripts import their heavy libs (pillow/numpy/
+# opencv-python/rembg) lazily, so CI never needs them.
+requests==2.32.3
+beautifulsoup4==4.12.3
