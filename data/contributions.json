@@ -2,9 +2,9 @@
   "username": "artunbalta",
   "range": {
     "start": "2025-10-05",
-    "end": "2026-10-04"
+    "end": "2026-10-05"
   },
-  "total": 421,
+  "total": 422,
   "days": [
     {
       "date": "2025-10-05",
@@ -1828,22 +1828,27 @@
     },
     {
       "date": "2026-10-04",
+      "level": 1,
+      "count": 1
+    },
+    {
+      "date": "2026-10-05",
       "level": 0,
       "count": 0
     }
   ],
   "stats": {
-    "total": 421,
-    "calendar_total": 421,
+    "total": 422,
+    "calendar_total": 422,
     "current_streak": {
-      "length": 78,
+      "length": 79,
       "start": "2026-07-18",
-      "end": "2026-10-03"
+      "end": "2026-10-04"
     },
     "longest_streak": {
-      "length": 78,
+      "length": 79,
       "start": "2026-07-18",
-      "end": "2026-10-03"
+      "end": "2026-10-04"
     },
     "best_day": {
       "date": "2026-01-08",
@@ -1862,8 +1867,8 @@
       "2026-07": 26,
       "2026-08": 62,
       "2026-09": 93,
-      "2026-10": 3
+      "2026-10": 4
     },
-    "days_with_activity": 123
+    "days_with_activity": 124
   }
 }
